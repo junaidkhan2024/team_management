@@ -1,0 +1,19 @@
+<h1> Add your team </h1>
+
+<%= form_with model @team, local true do |form| %>
+
+<div>
+
+<%= form.label :name %>
+<%= form.text_field :name %>
+
+</div>
+
+<div>
+<%= form.label :tech_stack %>
+<%= form.tex_field :tech_stack %>
+
+</div>
+
+<%= form.submit "SUBMIT" %>
+<% end %>

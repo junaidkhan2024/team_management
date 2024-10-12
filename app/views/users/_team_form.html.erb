@@ -1,0 +1,7 @@
+<%= form_with model: user, url: "/users/#{user.id}/assign_team" do |form| %>
+<div>
+  <% @all_teams = @teams.map {|t| [t.name, t.id]} %>
+  <%= form.select :team_id, options_for_select(@all_teams, user.teams.ids), prompt: 'Select Team' %>
+  <%= form.submit "Assign Team" %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<strong>Search Query <%= params[:query] %> </strong><br/>
+Found <%= @result.length %> users!
+
+<hr/>
+<h2>Results </h2>
+<table border=2>
+	<thead>
+		<th> S No </th>
+		<th> Name </th>
+		<th> Action </th>
+	</thead>
+	<tbody>
+		<% @result.each_with_index do |r, index| %>
+			<tr>
+				<td><%= index + 1 %></td>
+				<td><%= r.name %></td>
+				<td><%= link_to "Add", "/teams/#{params[:team_id]}/add?user_id=#{r.id}", data: { turbo: false} %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

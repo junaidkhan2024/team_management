@@ -1,12 +1,27 @@
 <%= link_to "ADD TEAM",new_team_path %>
 
-<b> @team.name </b>
-<b> @team.tech_stack </b>
+<%= @team.name %> </b>
+<b><%= @team.tech_stack %> </b>
 <hr>
-<h1> ADD USERS </h1>
-<%= form_with url: "/search", method: :get do |form| %>
-    <%= form.label :query, "Search for:" %>
-    <%= form.text_field :query %>
-    <%= form.submit "Search" %>
-  <% end %>
+<h1> ADD USERS to <%= @team.name %> </h1>
+<%= form_with url: "/teams/#{params[:id]}/search", method: :get do |form| %>
+  <%= form.label :query, "Search for:" %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
   
+<h4>Members of the team</h4>
+<table border=2>
+  <thead>
+    <th> S No </th>
+    <th> Name </th>
+  </thead>
+  <tbody>
+    <% @team.users.each_with_index do |r, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= r.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
